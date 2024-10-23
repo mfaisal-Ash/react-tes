@@ -1,68 +1,150 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    @apply overflow-x-hidden
+}
+.navbar-fixed {
+    @apply fixed z-[9999] bg-white bg-opacity-70 dark:bg-dark dark:bg-opacity-50;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+.navbar-list {
+    @apply text-base py-2 mx-8 flex text-dark dark:text-white;
+}
+.hamburger-line {
+    margin-top: 8px;
+    width: 30px;
+    height: 4px;
+    border-radius: 10px;
+    display: block;
+    background-color: black;
+    @apply dark:bg-white;
+
+}
+.hamburger-line:nth-child(1) {
+    width: 15px;
+
+}
+.hamburger-line:nth-child(3){
+    width: 25px;
+
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.hamburger-active > span:nth-child(1) {
+    @apply rotate-[45deg] w-9 ;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.hamburger-active > span:nth-child(3) {
+    @apply -rotate-[45deg] w-9 ;
 }
+.carousel-image {
+    width: 120px;
+    height: auto;
+}
+
+#dark-toggle:checked ~ label div .toggle-circle {
+    @apply translate-x-4;
+}
+#en-toggle:checked ~ label div .toggle-circle {
+    @apply translate-x-4;
+}
+
+
+.float-left {
+    float: left;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@keyframes matrix-fall {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .matrix-background {
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.matrix-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    font-size: 20px;
+    color: #00ff00;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.matrix-text span {
+    animation: typing 4s steps(12, end) infinite, matrix-fall 10s linear infinite;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes matrix-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+
+/*   
+  .matrix-background {
+    position: relative;
+    background-color: #000;
+    overflow: hidden;
+  }
+  
+  .matrix-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    color: #00ff00;
+    font-size: 20px;
+    animation: matrix-fall 10s linear infinite;
+    opacity: 0.5;
+  }
+  
+  .matrix-text::before {
+    content: "SELAMAT DATANG";
+    position: absolute;
+    white-space: nowrap;
+    animation: matrix-fall 10s linear infinite;
+  } */
+  
